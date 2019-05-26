@@ -1,0 +1,58 @@
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: 1800s
+    context-path: /manage
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      filters: stat
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/manage?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+      username: root
+      password: "000429323"
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 20
+  jpa:
+    show-sql: true
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    cache: false
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+  mvc:
+    static-path-pattern: /static/**
+
+#mybatis:
+#  configuration:
+#    map-underscore-to-camel-case: true
+#  mapper-locations: classpath:mapper/*.xml
+#  type-aliases-package: com.ctgu.lan.manage.model
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+  returnPageInfo: check
+
