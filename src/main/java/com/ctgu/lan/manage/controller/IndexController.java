@@ -31,4 +31,13 @@ public class IndexController {
         return "login";
     }
 
+    /**
+     * 跳转找回密码页面
+     * @return
+     */
+    @RequestMapping("findPassword")
+    public String findPassword(){
+        return "findPassword";
+    }
+
 }

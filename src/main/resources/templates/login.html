@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>login</title>
@@ -38,22 +38,22 @@
                 <div class="top-content-style">
                    <img src="static/images/defaultUser.jpg" alt="管理员头像" />
                 </div>
-                <form action="admin/login" method="post">
+                <form id = "loginForm" action="adminLogin" method="post" onSubmit="return checkSubmit();">
                     <p class="legend">Login Here<span class="fa fa-hand-o-down"></span></p>
                     <div class="input">
-                        <input type="text" placeholder="Phone" name="phoneNumber" required />
-                        <span class="fa fa-envelope"></span>
+                        <input id = "phone" type="text" placeholder="PhoneNumber" name="phoneNumber" required="" onblur="checkPhone()" />
+                        <span class="fa fa-user"></span>
                     </div>
                     <div class="input">
                         <input type="password" placeholder="Password" name="passWord" required />
-                        <span class="fa fa-unlock"></span>
+                        <span class="fa fa-unlock-alt"></span>
                     </div>
+                    <p id="msg" class="legend" style="font-size:14px;" th:text="${loginErrorMsg}" ></p>
                     <button type="submit" class="btn submit">
                         <span class="fa fa-sign-in"></span>
                     </button>
-                    <p th:text="${loginErrorMsg}" ></p>
                 </form>
-                <a href="#" class="bottom-text-w3ls">Forgot Password?</a>
+                <a href="findPassword" class="bottom-text-w3ls">Forgot Password?</a>
             </div>
         </div>
         <!-- //content -->
@@ -65,6 +65,35 @@
         </div>
     <!-- //copyright -->
     </div>
+    <script type="text/javascript">
+            var flag = 0;
+			function checkPhone(){
+				function $(id){
+    				return document.getElementById(id);
+				}
+				var phoneNumber=$("phone");
+				var msg=$("msg");
+				var reg = /^1(3|4|5|7|8|9)\d{9}$/;
+				if (reg.test(phoneNumber.value) != true) {
+					msg.innerHTML="电话号码不符合规范！";
+					flag = 0;
+				}
+				else{
+					flag = 1;
+					msg.innerHTML="";
+					return;
+				}
+			}
+			function checkSubmit(){
+				if( flag == 1 ){
+					return true;
+				}
+				else{
+					alert("信息不正确！");
+					return false;
+				}
+			}
+    </script>
 </body>
 
 </html>

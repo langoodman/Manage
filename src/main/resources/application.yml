@@ -6,6 +6,8 @@ server:
     context-path: /manage
 
 spring:
+  main:
+    allow-bean-definition-overriding: true
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
@@ -42,13 +44,6 @@ spring:
       max-request-size: -1
   mvc:
     static-path-pattern: /static/**
-
-#mybatis:
-#  configuration:
-#    map-underscore-to-camel-case: true
-#  mapper-locations: classpath:mapper/*.xml
-#  type-aliases-package: com.ctgu.lan.manage.model
-
 pagehelper:
   helperDialect: mysql
   reasonable: true

@@ -44,31 +44,31 @@
         </javaTypeResolver>
 
         <!-- 生成实体类地址 -->
-        <javaModelGenerator targetPackage="com.ctgu.lan.manage.model" targetProject="src/main/java" >
-            <property name="enableSubPackages" value="false"/>
-            <property name="trimStrings" value="true"/>
-        </javaModelGenerator>
+        <!--<javaModelGenerator targetPackage="com.ctgu.lan.manage.model" targetProject="src/main/java" >-->
+            <!--<property name="enableSubPackages" value="false"/>-->
+            <!--<property name="trimStrings" value="true"/>-->
+        <!--</javaModelGenerator>-->
         <!-- 生成mapxml文件 -->
-        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources" >
-            <property name="enableSubPackages" value="false" />
-        </sqlMapGenerator>
+        <!--<sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources" >-->
+            <!--<property name="enableSubPackages" value="false" />-->
+        <!--</sqlMapGenerator>-->
         <!-- 生成mapxml对应client，也就是接口dao -->
-        <javaClientGenerator targetPackage="com.ctgu.lan.manage.dao" targetProject="src/main/java" type="XMLMAPPER" >
-            <property name="enableSubPackages" value="true" />
-        </javaClientGenerator>
+        <!--<javaClientGenerator targetPackage="com.ctgu.lan.manage.dao" targetProject="src/main/java" type="XMLMAPPER" >-->
+            <!--<property name="enableSubPackages" value="true" />-->
+        <!--</javaClientGenerator>-->
         <!-- table可以有多个,每个数据库中的表都可以写一个table，tableName表示要匹配的数据库表,也可以在tableName属性中通过使用%通配符来匹配所有数据库表,只有匹配的表才会自动生成文件 -->
         <!--如果想生成一个表则tableName="table_name"-->
-        <table tableName="%"
-               enableCountByExample="true"
-               enableUpdateByExample="true"
-               enableDeleteByExample="true"
-               enableSelectByExample="true"
-               selectByExampleQueryId="true">
-            <!-- 如果设置为true，生成的model类会直接使用column本身的名字，而不会再使用驼峰命名方法，
-                比如BORN_DATE，生成的属性名字就是BORN_DATE,而不会是bornDate -->
-            <property name="useActualColumnNames" value="false" />
-            <!-- 数据库表主键 -->
-            <generatedKey column="id" sqlStatement="Mysql" identity="true" />
-        </table>
+        <!--<table tableName="%"-->
+               <!--enableCountByExample="true"-->
+               <!--enableUpdateByExample="true"-->
+               <!--enableDeleteByExample="true"-->
+               <!--enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="true">-->
+            <!--&lt;!&ndash; 如果设置为true，生成的model类会直接使用column本身的名字，而不会再使用驼峰命名方法，-->
+                <!--比如BORN_DATE，生成的属性名字就是BORN_DATE,而不会是bornDate &ndash;&gt;-->
+            <!--<property name="useActualColumnNames" value="false" />-->
+            <!--&lt;!&ndash; 数据库表主键 &ndash;&gt;-->
+            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true" />-->
+        <!--</table>-->
     </context>
 </generatorConfiguration>

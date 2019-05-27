@@ -6,9 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 
-//@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @SpringBootApplication
-//@ComponentScan(basePackages = "com.ctgu.lan.manage")
 @MapperScan("com.ctgu.lan.manage.dao")
 public class ManageApplication {
 
