@@ -1,6 +1,7 @@
 package com.ctgu.lan.manage.service;
 
 import com.ctgu.lan.manage.model.Admin;
+import org.springframework.data.repository.query.Param;
 
 /**
  * @Description TODO
@@ -12,4 +13,6 @@ import com.ctgu.lan.manage.model.Admin;
 public interface AdminRepositoryService {
     Admin findByPhoneNumberAndPassWord(String phoneNumber , String passWord);
     Admin findByEmailAndPhoneNumber(String email , String phoneNumber);
+    int modifyNowTimeById(String nowTime, Integer id);
+    int modifyPassWordById(@Param("passWord") String passWord, @Param("id") Integer id);
 }

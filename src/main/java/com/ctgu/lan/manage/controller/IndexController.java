@@ -20,7 +20,7 @@ public class IndexController {
      */
     @RequestMapping("/")
     public String index(){
-        return "login";
+        return "admin/login";
     }
     /**
      * 跳转登录页面
@@ -28,7 +28,7 @@ public class IndexController {
      */
     @RequestMapping("/login")
     public String login(){
-        return "login";
+        return "admin/login";
     }
 
     /**
@@ -37,7 +37,7 @@ public class IndexController {
      */
     @RequestMapping("/findPassword")
     public String findPassword(){
-        return "findPassword";
+        return "admin/findPassword";
     }
 
     /**
@@ -46,7 +46,7 @@ public class IndexController {
      */
     @RequestMapping("/changePassword")
     public String changePassword(){
-        return "changePassword";
+        return "admin/changePassword";
     }
 
 }

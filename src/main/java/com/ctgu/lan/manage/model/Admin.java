@@ -7,15 +7,17 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
-@Getter
-@Setter
+
 @ToString
 @Entity
 @DynamicUpdate
 @DynamicInsert
+@Getter
+@Setter
 @Table(name = "admin")
-public class Admin {
+public class Admin implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -32,7 +34,7 @@ public class Admin {
     @Column(name = "avatar")
     private String avatar;
     @Column(name = "last_time")
-    private Date lastTime;
+    private String lastTime;
     @Column(name = "sign_time")
     private Date signTime;
 }

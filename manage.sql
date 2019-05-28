@@ -12,7 +12,7 @@ CREATE TABLE if not exists admin(
 	age int,
 	avatar varchar(200) COMMENT '头像',
 	-- status_id int default 3,
-	last_time datetime COMMENT '最后登陆时间',
+	last_time varchar(40) COMMENT '最后登陆时间',
 	sign_time TIMESTAMP default current_timestamp
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT = 10001;
 INSERT INTO admin (phone_number, pass_word,name,age,email) 

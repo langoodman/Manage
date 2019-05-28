@@ -27,4 +27,14 @@ public class AdminRepositoryServiceImpl implements AdminRepositoryService {
     public Admin findByEmailAndPhoneNumber(String email, String phoneNumber) {
         return adminRepository.findByEmailAndPhoneNumber(email,phoneNumber);
     }
+
+    @Override
+    public int modifyNowTimeById(String nowTime, Integer id) {
+        return adminRepository.modifyNowTimeById(nowTime,id);
+    }
+
+    @Override
+    public int modifyPassWordById(String passWord, Integer id) {
+        return adminRepository.modifyPassWordById(passWord,id);
+    }
 }
