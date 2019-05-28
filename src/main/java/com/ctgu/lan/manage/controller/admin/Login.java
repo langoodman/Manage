@@ -37,13 +37,14 @@ public class Login {
         Admin admin = adminRepositoryService.findByPhoneNumberAndPassWord(phoneNumber , cryptPassWord);
         if( admin != null ){
             System.out.println(admin.toString());
-            return "login";
+            /**
+             * 修改登录时间
+             */
+            return "main";
         }
         else{
             model.addAttribute("loginErrorMsg","电话号码不存在或密码错误");
             return "login";
         }
     }
-
-
 }

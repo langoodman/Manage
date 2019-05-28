@@ -35,9 +35,18 @@ public class IndexController {
      * 跳转找回密码页面
      * @return
      */
-    @RequestMapping("findPassword")
+    @RequestMapping("/findPassword")
     public String findPassword(){
         return "findPassword";
+    }
+
+    /**
+     * 跳转到修改密码界面
+     * @return
+     */
+    @RequestMapping("/changePassword")
+    public String changePassword(){
+        return "changePassword";
     }
 
 }

@@ -11,4 +11,5 @@ import com.ctgu.lan.manage.model.Admin;
  */
 public interface AdminRepositoryService {
     Admin findByPhoneNumberAndPassWord(String phoneNumber , String passWord);
+    Admin findByEmailAndPhoneNumber(String email , String phoneNumber);
 }

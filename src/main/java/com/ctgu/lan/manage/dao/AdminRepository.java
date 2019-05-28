@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface AdminRepository extends JpaRepository<Admin , String> {
     Admin findByPhoneNumberAndPassWord(String phoneNumber , String passWord);
-
+    Admin findByEmailAndPhoneNumber(String email , String phoneNumber);
 }

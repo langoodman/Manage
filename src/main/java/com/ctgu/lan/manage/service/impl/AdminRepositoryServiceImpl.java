@@ -22,4 +22,9 @@ public class AdminRepositoryServiceImpl implements AdminRepositoryService {
     public Admin findByPhoneNumberAndPassWord(String phoneNumber, String passWord) {
         return adminRepository.findByPhoneNumberAndPassWord(phoneNumber , passWord);
     }
+
+    @Override
+    public Admin findByEmailAndPhoneNumber(String email, String phoneNumber) {
+        return adminRepository.findByEmailAndPhoneNumber(email,phoneNumber);
+    }
 }
