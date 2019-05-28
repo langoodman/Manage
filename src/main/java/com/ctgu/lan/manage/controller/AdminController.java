@@ -36,9 +36,11 @@ public class AdminController {
      * 管理员登录
      * @param phoneNumber
      * @param passWord
+     * @param session
+     * @param modelMap
      * @return
      */
-    @RequestMapping("/login")
+    @RequestMapping("/loginInfo")
     public String adminLogin(@RequestParam("phoneNumber")String phoneNumber ,
                              @RequestParam("passWord")String passWord,
                              HttpSession session,
@@ -54,14 +56,13 @@ public class AdminController {
             admin.setLastTime(nowTimeString);
             adminRepositoryService.modifyNowTimeById(nowTimeString,admin.getId());
             session.setAttribute("admin",admin);
-            session.removeAttribute("loginErrorMsg");
-            return "redirect:/login";
+//            return "redirect:/login";
+            return "admin/login";
         }
         else{
 //            session.setAttribute("loginErrorMsg","电话号码不存在或密码错误");
             modelMap.addAttribute("loginErrorMsg","电话号码不存在或密码错误");
-            return "redirect:/login";
-//            return "admin/login";
+            return "admin/login";
         }
     }
 

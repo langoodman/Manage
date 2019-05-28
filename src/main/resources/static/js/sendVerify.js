@@ -57,7 +57,7 @@
 		if( flag == 1 ){
 //		    console.log(data);
 		    $.ajax({
-        	    url: "admin/getVerify",
+        	    url: "/admin/getVerify",
         	    async : true,
                 type: "post",
                 contentType:"application/json;charset=utf-8",

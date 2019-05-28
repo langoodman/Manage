@@ -3,7 +3,7 @@ server:
   servlet:
     session:
       timeout: 1800s
-    context-path: /manage
+#    context-path: /manage
 
 spring:
   main:
