@@ -10,6 +10,15 @@ package com.ctgu.lan.manage.model.dto;
 public class CheckAdminWhenGetVerify {
     private String phoneNumber;
     private String email;
+    private String verify;
+
+    public String getVerify() {
+        return verify;
+    }
+
+    public void setVerify(String verify) {
+        this.verify = verify;
+    }
 
     public String getEmail() {
         return email;
@@ -30,8 +39,9 @@ public class CheckAdminWhenGetVerify {
     @Override
     public String toString() {
         return "CheckAdminWhenGetVerify{" +
-                "email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
+                "phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", verify='" + verify + '\'' +
                 '}';
     }
 }

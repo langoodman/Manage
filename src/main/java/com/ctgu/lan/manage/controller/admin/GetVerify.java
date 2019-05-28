@@ -6,10 +6,8 @@ import com.ctgu.lan.manage.service.AdminRepositoryService;
 import com.ctgu.lan.manage.utils.EmailUtil;
 import com.ctgu.lan.manage.utils.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Description 检测要找回密码的人是否合格
@@ -18,13 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
  * @ClassName GetVerify
  * @Version 1.0.0
  */
-@RestController
+@Controller
 public class GetVerify {
     @Autowired
     private AdminRepositoryService adminRepositoryService;
 
     @RequestMapping("/getVerify")
-    public String checkAdmin(@RequestBody CheckAdminWhenGetVerify checkAdminWhenGetVerify){
+    @ResponseBody
+    public CheckAdminWhenGetVerify checkAdmin(@RequestBody(required = false) CheckAdminWhenGetVerify checkAdminWhenGetVerify){
         Admin admin = adminRepositoryService.findByEmailAndPhoneNumber(checkAdminWhenGetVerify.getEmail(),
                 checkAdminWhenGetVerify.getPhoneNumber());
         if( admin != null ){
@@ -33,11 +32,13 @@ public class GetVerify {
             String verify = RandomString.randStr(6);
             System.out.println(verify);
             System.out.println(admin.toString());
-//            EmailUtil.qqEmail(from, email, Authorization,verify);
-            return verify;
-//            return "1";
+            EmailUtil.qqEmail(from, checkAdminWhenGetVerify.getEmail(), Authorization,verify);
+            checkAdminWhenGetVerify.setVerify(verify);
         }
-        else return "0";
+        else{
+            checkAdminWhenGetVerify.setVerify("error");
+        }
+        return checkAdminWhenGetVerify;
     }
 
 }

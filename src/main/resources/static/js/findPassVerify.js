@@ -62,21 +62,20 @@
                 type: "post",
                 contentType:"application/json;charset=utf-8",
                 dataType: "json",
-                data: data,
+                data: JSON.stringify(data),
       	        success: function (data) {
       	            console.log(data);
-        	        if(data != "0"){
+        	        if(data.verify != "error"){
         	            alert("验证码已经发送到邮箱,请注意查收!");
-        	            verify = data;
+        	            verify = data.verify;
         	            mark = 1;
         	        }
         	        else{
-        	            alert("验证码发送失败!");
+        	            alert("验证码发送失败!请检查你的电话号码或者邮箱!");
         	            mark = 0;
         	        }
         	    },
         	    error: function(XMLHttpRequest, textStatus, errorThrown){
-        	        console.log(data);
         	        alert("验证码发送失败!");
         	        console.error(XMLHttpRequest);
                     mark = 0;
