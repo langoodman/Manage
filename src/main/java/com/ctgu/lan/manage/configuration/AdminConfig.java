@@ -4,23 +4,22 @@ import com.ctgu.lan.manage.aop.AdminInterceptor;
 import com.ctgu.lan.manage.aop.StaticInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * @Description TODO
  * @auther lan_wh
- * @create 2019-05-28 16:56
- * @ClassName StaticConfig
+ * @create 2019-05-29 17:23
+ * @ClassName AdminConfig
  * @Version 1.0.0
  */
 @Configuration
-public class StaticConfig implements WebMvcConfigurer {
-        @Override
-        public void addInterceptors(InterceptorRegistry registry) {
-            registry.addInterceptor(new StaticInterceptor())
-                    .addPathPatterns("/**")
-                    .excludePathPatterns("/static/**");
+public class AdminConfig implements WebMvcConfigurer {
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new AdminInterceptor())
+                .addPathPatterns("/admin/**")
+                .excludePathPatterns("/admin/loginInfo","/admin/logout","/admin/getVerify");
 //            super.addInterceptors(registry);
-        }
+    }
 }

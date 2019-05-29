@@ -1,62 +1,29 @@
 package com.ctgu.lan.manage.model;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
+@ToString
+@Entity
+@DynamicUpdate
+@DynamicInsert
+@Getter
+@Setter
+@Table(name = "medicine_transaction")
 public class MedicineTransaction implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
+    @Column(name = "medicine_id")
     private Integer medicineId;
-
+    @Column(name = "orders_id")
     private Integer ordersId;
-
+    @Column(name = "count")
     private Integer count;
-
-    private static final long serialVersionUID = 1L;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getMedicineId() {
-        return medicineId;
-    }
-
-    public void setMedicineId(Integer medicineId) {
-        this.medicineId = medicineId;
-    }
-
-    public Integer getOrdersId() {
-        return ordersId;
-    }
-
-    public void setOrdersId(Integer ordersId) {
-        this.ordersId = ordersId;
-    }
-
-    public Integer getCount() {
-        return count;
-    }
-
-    public void setCount(Integer count) {
-        this.count = count;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", medicineId=").append(medicineId);
-        sb.append(", ordersId=").append(ordersId);
-        sb.append(", count=").append(count);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
 }

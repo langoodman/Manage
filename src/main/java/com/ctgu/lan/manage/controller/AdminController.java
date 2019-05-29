@@ -33,6 +33,14 @@ public class AdminController {
     private AdminRepositoryService adminRepositoryService;
 
     /**
+     * 跳转到修改密码界面
+     * @return
+     */
+    @RequestMapping("/changePassword")
+    public String changePassword(){
+        return "admin/changePassword";
+    }
+    /**
      * 管理员登录
      * @param phoneNumber
      * @param passWord

@@ -1,95 +1,36 @@
 package com.ctgu.lan.manage.model;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
+@ToString
+@Entity
+@DynamicUpdate
+@DynamicInsert
+@Getter
+@Setter
+@Table(name = "Orders")
 public class Orders implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
+    @Column(name = "staff_id")
     private Integer staffId;
-
+    @Column(name = "pharmacy_id")
     private Integer pharmacyId;
-
+    @Column(name = "user_id")
     private Integer userId;
-
+    @Column(name = "should_money")
     private Double shouldMoney;
-
+    @Column(name = "relly_money")
     private Double rellyMoney;
-
+    @Column(name = "integral")
     private Integer integral;
 
-    private static final long serialVersionUID = 1L;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getStaffId() {
-        return staffId;
-    }
-
-    public void setStaffId(Integer staffId) {
-        this.staffId = staffId;
-    }
-
-    public Integer getPharmacyId() {
-        return pharmacyId;
-    }
-
-    public void setPharmacyId(Integer pharmacyId) {
-        this.pharmacyId = pharmacyId;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public Double getShouldMoney() {
-        return shouldMoney;
-    }
-
-    public void setShouldMoney(Double shouldMoney) {
-        this.shouldMoney = shouldMoney;
-    }
-
-    public Double getRellyMoney() {
-        return rellyMoney;
-    }
-
-    public void setRellyMoney(Double rellyMoney) {
-        this.rellyMoney = rellyMoney;
-    }
-
-    public Integer getIntegral() {
-        return integral;
-    }
-
-    public void setIntegral(Integer integral) {
-        this.integral = integral;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", staffId=").append(staffId);
-        sb.append(", pharmacyId=").append(pharmacyId);
-        sb.append(", userId=").append(userId);
-        sb.append(", shouldMoney=").append(shouldMoney);
-        sb.append(", rellyMoney=").append(rellyMoney);
-        sb.append(", integral=").append(integral);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
 }
