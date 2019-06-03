@@ -18,5 +18,5 @@ public interface StaffRepositoryService {
     Staff addStaffInfo(Staff staff);
     Staff findByPhoneNumber(String phoneNumber);
     Staff findOneById(Integer id);
-    void deleUserById(Integer id);
+    void deleSatffById(Integer id);
 }

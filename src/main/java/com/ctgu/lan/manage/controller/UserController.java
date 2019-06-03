@@ -67,7 +67,7 @@ public class UserController {
      * @return
      */
     @RequestMapping("/operationUser")
-    public String operationTeacher(User user, RedirectAttributes attributes){
+    public String operationUser(User user, RedirectAttributes attributes){
         if(user.getId() == null){
             attributes.addFlashAttribute("adminUser", user);
             return "redirect:/user/addUserInfo";
@@ -86,7 +86,7 @@ public class UserController {
      */
     @RequestMapping("/addUserInfo")
     @ResponseBody
-    public String addOneTeacher(@ModelAttribute("adminUser")User user , Model model , HttpSession session ){
+    public String addOneUser(@ModelAttribute("adminUser")User user , Model model , HttpSession session ){
         if( userRepositoryService.findByPhoneNumber(user.getPhoneNumber()) != null ){
             model.addAttribute("manageUserMsg", "该会员已存在!");
             return "0";
@@ -111,9 +111,9 @@ public class UserController {
      */
     @RequestMapping("/updateUserInfo")
     @ResponseBody
-    public String updateOneTeacher( Model model , HttpSession session ,@ModelAttribute("adminUser") User user ){
+    public String updateOneUser( Model model , HttpSession session ,@ModelAttribute("adminUser") User user ){
         if( userRepositoryService.findByPhoneNumber(user.getPhoneNumber()) == null ){
-            model.addAttribute("manageUserMsg", "该会员已存在!");
+            model.addAttribute("manageUserMsg", "该会员不存在!");
             return "0";
         }
         else {
@@ -132,7 +132,7 @@ public class UserController {
      */
     @RequestMapping("/delUser")
     @ResponseBody
-    public String deleOneTeacher( Model model , HttpSession session,
+    public String deleOneUser( Model model , HttpSession session,
                                   @RequestParam("id") Integer id ){
         if( userRepositoryService.findOneById(id) == null ){
             model.addAttribute("manageUserMsg", "该会员不存在!");

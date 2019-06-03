@@ -39,14 +39,13 @@
             <th class="check-header hidden-xs">
                 <input id="checkAll" name="checkAll" type="checkbox">
             <th style="display:none">id</th>
-            <th>会员卡号</th>
             <th>电话号码 </th>
             <th>姓名</th>
             <th>性别</th>
             <th>状态</th>
+            <th>年龄</th>
             <th>所属药店</th>
-            <th>积分</th>
-            <th>注册时间</th>
+            <th>家庭住址</th>
             <th>操作</th>
             </thead>
             <tbody id="mainbody">
@@ -62,12 +61,12 @@
 <!--<script src="../js/Util.js"></script>-->
 <!--@*创建表格*@ -->
 <script src="../../static/js/edit.js"></script>
-<script src="../../static/js/user-add.js"></script>
+<script src="../../static/js/staff-add.js"></script>
 <script src="../../static/js/delect.js"></script>
 <script src="../../static/js/pages.js"></script>
 <script src="../../static/js/ajax.js"></script>
 <script src="../../static/js/submit.js"></script>
-<script src="../../static/js/user-get.js"></script>
+<script src="../../static/js/staff-get.js"></script>
 <script type="text/javascript">
     function fun(id){
     	return document.getElementById(id);
@@ -77,7 +76,7 @@
         var data = {};
 		data.phoneNumber = $phoneNumber.value;
 	    $.ajax({
-            url: "/user/findUserByPhoneNumber",
+            url: "/staff/findStaffByPhoneNumber",
             async : true,
             type: "post",
             contentType:"application/json;charset=utf-8",
@@ -88,21 +87,20 @@
         	    if(data.name != "errorFind"){
         	        alert("查询到如下信息:\r\n "+
 	                "ID          :" + data.id + " \r\n " +
-	                "会员卡号:" + data.cardId + " \r\n " +
 	                "电话号码:" + data.phoneNumber + " \r\n " +
 	                "姓       名:" + data.name + " \r\n " +
 	                "性       别:" + data.gender + " \r\n " +
-	                "会员状态:" + data.status + " \r\n " +
+	                "状       态:" + data.status + " \r\n " +
+	                "年       龄:" + data.age + " \r\n " +
 	                "所属药店:" + data.pharmacyId + " \r\n " +
-	                "会员积分:" + data.integral + " \r\n " +
-	                "注册时间:" + data.signTime + " \r\n ");
+	                "家庭住址:" + data.address + " \r\n ");
         	     }
         	     else{
         	         alert("查无此人!");
         	     }
         	 },
         	 error: function(XMLHttpRequest, textStatus, errorThrown){
-        	    <!--alert("查询失败!");-->
+        	    alert("查询失败!");
         	    console.error(XMLHttpRequest);
         	}
         });

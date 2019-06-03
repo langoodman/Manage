@@ -150,7 +150,7 @@ public class AdminController {
         sessionAdmin.setName(admin.getName());
         sessionAdmin.setEmail(admin.getEmail());
         Admin admin1 = adminRepositoryService.updateAdminInfo(sessionAdmin);
-        session.setAttribute("admin","sessionAdmin");
+        session.setAttribute("admin",sessionAdmin);
         System.out.println(admin1.toString());
         return "html/welcome";
     }
