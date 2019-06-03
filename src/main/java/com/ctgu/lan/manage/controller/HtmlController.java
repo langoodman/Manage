@@ -40,4 +40,13 @@ public class HtmlController {
     public String userManage(){
         return "html/userManage";
     }
+
+    /**
+     * 跳转员工管理页面
+     * @return
+     */
+    @RequestMapping("/staffManage")
+    public String staffManage(){
+        return "html/staffManage";
+    }
 }

@@ -123,6 +123,13 @@ public class UserController {
         }
     }
 
+    /**
+     * 删除会员的信息
+     * @param model
+     * @param session
+     * @param id
+     * @return
+     */
     @RequestMapping("/delUser")
     @ResponseBody
     public String deleOneTeacher( Model model , HttpSession session,
@@ -136,5 +143,23 @@ public class UserController {
             model.addAttribute("manageUserMsg", "删除成功!");
             return "1";
         }
+    }
+
+    /**
+     * 通过电话号码查询
+     * @param user
+     * @param session
+     * @return
+     */
+    @RequestMapping("/findUserByPhoneNumber")
+    @ResponseBody
+    public User findUserByPhoneNumber(@RequestBody(required = false) User user,
+                                              HttpSession session){
+        User findUser = userRepositoryService.findByPhoneNumber(user.getPhoneNumber());
+        if( findUser == null ){
+            user.setName("errorFind");
+            return user;
+        }
+        return findUser;
     }
 }

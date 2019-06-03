@@ -3,6 +3,7 @@ package com.ctgu.lan.manage.controller;
 import com.ctgu.lan.manage.model.Admin;
 import com.ctgu.lan.manage.model.dto.CheckAdminWhenGetVerify;
 import com.ctgu.lan.manage.service.AdminRepositoryService;
+import com.ctgu.lan.manage.service.StaffRepositoryService;
 import com.ctgu.lan.manage.service.UserRepositoryService;
 import com.ctgu.lan.manage.utils.EmailUtil;
 import com.ctgu.lan.manage.utils.MD5Util;
@@ -35,6 +36,9 @@ public class AdminController {
 
     @Autowired
     private UserRepositoryService userRepositoryService;
+
+    @Autowired
+    private StaffRepositoryService staffRepositoryService;
 
     /**
      * 跳转到修改密码界面
@@ -71,7 +75,9 @@ public class AdminController {
             session.setAttribute("nowTimeString",nowTimeString);
             adminRepositoryService.modifyNowTimeById(nowTimeString,admin.getId());
             Long userCount = userRepositoryService.countUser();
+            Long staffCount = staffRepositoryService.countStaff();
             session.setAttribute("userCount",userCount);
+            session.setAttribute("staffCount",staffCount);
 //            return "redirect:/login";
             return "index";
         }
