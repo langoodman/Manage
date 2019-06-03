@@ -1,7 +1,6 @@
 package com.ctgu.lan.manage.controller;
 
 import com.ctgu.lan.manage.model.Staff;
-import com.ctgu.lan.manage.model.User;
 import com.ctgu.lan.manage.service.StaffRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,8 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 /**

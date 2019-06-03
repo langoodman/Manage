@@ -36,7 +36,8 @@ INSERT INTO user (card_id,phone_number, name,gender,pharmacy_id)
 -- 药店表
 Create TABLE if not exists pharmacy(
 	id int auto_increment PRIMARY KEY,
-	phone_number varchar(11) NOT NULL unique,
+--	phone_number varchar(11) NOT NULL unique,
+    phone_number varchar(11) NOT NULL,
 	address varchar(50) NOT NULL COMMENT '药店的地址',
 	name varchar(30) not null
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT = 10001;
