@@ -37,4 +37,9 @@ public class AdminRepositoryServiceImpl implements AdminRepositoryService {
     public int modifyPassWordById(String passWord, Integer id) {
         return adminRepository.modifyPassWordById(passWord,id);
     }
+
+    @Override
+    public Admin updateAdminInfo(Admin admin) {
+        return adminRepository.saveAndFlush(admin);
+    }
 }

@@ -20,7 +20,7 @@ public class IndexController {
      * @return
      */
     @RequestMapping("/")
-    public String index(){
+    public String loginIndex(){
         return "admin/login";
     }
     /**
@@ -41,5 +41,13 @@ public class IndexController {
         return "admin/findPassword";
     }
 
+    /**
+     * 跳转到后台管理主页
+     * @return
+     */
+    @RequestMapping("/index")
+    public String index(){
+        return "index";
+    }
 
 }

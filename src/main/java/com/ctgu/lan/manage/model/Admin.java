@@ -31,8 +31,6 @@ public class Admin implements Serializable {
     private Integer age;
     @Column(name = "email")
     private String email;
-    @Column(name = "avatar")
-    private String avatar;
     @Column(name = "last_time")
     private String lastTime;
     @Column(name = "sign_time")

@@ -1,7 +1,6 @@
 package com.ctgu.lan.manage.configuration;
 
 import com.ctgu.lan.manage.aop.AdminInterceptor;
-import com.ctgu.lan.manage.aop.StaticInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -18,8 +17,9 @@ public class AdminConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new AdminInterceptor())
-                .addPathPatterns("/admin/**")
-                .excludePathPatterns("/admin/loginInfo","/admin/logout","/admin/getVerify");
+                .addPathPatterns("/**")
+                .excludePathPatterns("/login","/findPassword","/","/admin/loginInfo",
+                        "/admin/logout","/admin/getVerify","/static/**");
 //            super.addInterceptors(registry);
     }
 }

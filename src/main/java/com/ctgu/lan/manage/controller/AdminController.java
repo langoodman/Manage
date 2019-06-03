@@ -58,14 +58,16 @@ public class AdminController {
         Admin admin = adminRepositoryService.findByPhoneNumberAndPassWord(phoneNumber , cryptPassWord);
         if( admin != null ){
             System.out.println(admin.toString());
+            session.setAttribute("lastTimeString",admin.getLastTime());
+            session.setAttribute("admin",admin);
             Date nowTime = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String nowTimeString = sdf.format(nowTime);
             admin.setLastTime(nowTimeString);
+            session.setAttribute("nowTimeString",nowTimeString);
             adminRepositoryService.modifyNowTimeById(nowTimeString,admin.getId());
-            session.setAttribute("admin",admin);
 //            return "redirect:/login";
-            return "admin/login";
+            return "index";
         }
         else{
 //            session.setAttribute("loginErrorMsg","电话号码不存在或密码错误");
@@ -102,6 +104,12 @@ public class AdminController {
         return checkAdminWhenGetVerify;
     }
 
+    /**
+     * 管理员修改密码
+     * @param newPassWord
+     * @param session
+     * @return
+     */
     @RequestMapping("/changePass")
     public String changePass(@RequestParam("newPassWord")String newPassWord,
                              HttpSession session){
@@ -110,5 +118,28 @@ public class AdminController {
         adminRepositoryService.modifyPassWordById(cryptPassWord,admin.getId());
         session.removeAttribute("admin");
         return "admin/login";
+    }
+
+    /**
+     * 管理员退出登录
+     * @param session
+     * @return
+     */
+    @RequestMapping("/logout")
+    public String adminLogout(HttpSession session){
+        session.invalidate();
+        return "admin/login";
+    }
+
+    @RequestMapping("/updateInfo")
+    public String updateAdminInfo(Admin admin , HttpSession session){
+        Admin sessionAdmin = (Admin)session.getAttribute("admin");
+        sessionAdmin.setAge(admin.getAge());
+        sessionAdmin.setName(admin.getName());
+        sessionAdmin.setEmail(admin.getEmail());
+        Admin admin1 = adminRepositoryService.updateAdminInfo(sessionAdmin);
+        session.setAttribute("admin","sessionAdmin");
+        System.out.println(admin1.toString());
+        return "html/welcome";
     }
 }

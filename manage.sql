@@ -10,7 +10,7 @@ CREATE TABLE if not exists admin(
 	name varchar(30),
 	email varchar(30),
 	age int,
-	avatar varchar(200) COMMENT '头像',
+    --	avatar varchar(200) COMMENT '头像',
 	-- status_id int default 3,
 	last_time varchar(40) COMMENT '最后登陆时间',
 	sign_time TIMESTAMP default current_timestamp
@@ -25,7 +25,7 @@ Create Table if not exists user(
     phone_number varchar(11) NOT NULL unique,
     name varchar(30) COMMENT '姓名',
 	gender varchar(10) COMMENT '性别',
-	status_id int default 3 COMMENT '会员状态',
+	status varchar(30) COMMENT '会员状态',
 	pharmacy_id int NOT NULL COMMENT '所属药店id',
 	integral int default 0 COMMENT '会员积分',
 	sign_time TIMESTAMP default current_timestamp

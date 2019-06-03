@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../static/css/font.css">
+    <link rel="stylesheet" href="../static/css/xadmin.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/jquery-1.11.1.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">修改信息</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="userInfoForm" action="/admin/updateInfo" method="POST" onSubmit="return checkSubmit();">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3 col-xs-3 text-right">
+                                <label style="line-height: 34px;"><span style="color: red;">*</span>电话</label>
+                            </div>
+                            <div class="col-md-7 col-xs-7 text-left">
+                                <input type="text" class="form-control" id="showinfo1"
+                                       th:value="${session.admin.getPhoneNumber()}" disabled>
+                            </div>
+                            <div class="col-md-2 col-xs-2 text-left" style="line-height: 34px;">
+                                <span class="fa fa-check"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3 col-xs-3 text-right">
+                                <label style="line-height: 34px;"><span style="color: red;">*</span>姓名</label>
+                            </div>
+                            <div class="col-md-7 col-xs-7 text-left">
+                                <input type="text" class="form-control"
+                                       name="name" id="showinfo2" th:value="${session.admin.getName()}">
+                            </div>
+                            <div class="col-md-2 col-xs-2 text-left" style="line-height: 34px;">
+                                <span class="fa fa-check"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3 col-xs-3 text-right">
+                                <label style="line-height: 34px;">邮箱</label>
+                            </div>
+                            <div class="col-md-7 col-xs-7 text-left">
+                                <input type="email" class="form-control"
+                                       name="email" id="showinfo3" th:value="${session.admin.getEmail()}">
+                            </div>
+                            <div class="col-md-2 col-xs-2 text-left" style="line-height: 34px;">
+                                <span class="fa fa-check"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3 col-xs-3 text-right">
+                                <label style="line-height: 34px;">年龄</label>
+                            </div>
+                            <div class="col-md-7 col-xs-7 text-left">
+                                <input type="text" class="form-control"
+                                       name="age" id="showinfo4" th:value="${session.admin.getAge()}" >
+                            </div>
+                            <div class="col-md-2 col-xs-2 text-left" style="line-height: 34px;">
+                                <span class="fa fa-check"></span>
+                            </div>
+                        </div>
+                        <div class="line1" style="margin-top: 10px;"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            <a href="/html/welcome" style="text-decoration:none;color:black;">前台首页</a>
+                        </button>
+                        <button type="submit" class="btn btn-primary submit" id="submit1">保存修改</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        <!--function $(id){-->
+    		<!--return document.getElementById(id);-->
+		<!--}-->
+        var flag1 = 1,
+        flag2 = 1;
+        $('#showinfo2').blur(function () {
+            var name = $('#showinfo2').val();
+            var icon = $('#showinfo2').parent().next().children();
+            if (name == "") {
+                icon.css('color', 'red');
+                icon.removeClass('fa-check');
+                icon.addClass('fa-remove');
+                icon.css('margin-top', '10px');
+                $('#showinfo3').val('');
+                flag1 = 0;
+            } else {
+                icon.css('color', 'steelblue');
+                icon.removeClass('fa-remove');
+                icon.addClass('fa-check');
+                icon.css('margin-top', '0px');
+                icon.css('margin-left', '0px');
+                flag1 = 1;
+            }
+        });
+        $('#showinfo3').blur(function () {
+            var email = $('#showinfo3').val();
+            var icon = $('#showinfo3').parent().next().children();
+            if (email.value == "") {
+                icon.css('color', 'red');
+                icon.removeClass('fa-check');
+                icon.addClass('fa-remove');
+                icon.css('margin-top', '10px');
+                $('#showinfo3').val('');
+                flag2 = 0;
+            } else {
+                icon.css('color', 'steelblue');
+                icon.removeClass('fa-remove');
+                icon.addClass('fa-check');
+                icon.css('margin-top', '0px');
+                icon.css('margin-left', '0px');
+                flag2 = 1;
+            }
+        });
+        function checkSubmit(){
+            if (flag1 && flag2){
+                return true;
+            }
+            else{
+                alert("请按要求填写全部信息");
+                return false;
+            }
+        }
+
+    </script>
+
+</body>
+</html>

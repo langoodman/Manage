@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-public interface AdminRepository extends JpaRepository<Admin , String> {
+public interface AdminRepository extends JpaRepository<Admin , Integer> {
     Admin findByPhoneNumberAndPassWord(String phoneNumber , String passWord);
     Admin findByEmailAndPhoneNumber(String email , String phoneNumber);
     @Modifying

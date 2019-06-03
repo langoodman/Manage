@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>主页</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="../static/css/font.css">
+        <link rel="stylesheet" href="../static/css/xadmin.css">
+        <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+
+        <script src="../static/js/jquery.min.js"></script>
+        <script src="../static/js/jquery-1.11.1.min.js"></script>
+        <script src="../static/js/bootstrap.min.js"></script>
+        <!--<script type="text/javascript" src="../static/js/lib/layui/layui.js" charset="utf-8"></script>-->
+        <!--<script type="text/javascript" src="../static/js/xadmin.js"></script>-->
+
+    </head>
+    <body>
+    <div class="x-body layui-anim layui-anim-up">
+        <blockquote class="layui-elem-quote">欢迎管理员：
+            <span class="x-red"><p th:text="${session.admin.getName() + '!'}"></p></span>
+            此次登录时间为:<p th:text="${session.nowTimeString}"></p></blockquote>
+        <fieldset class="layui-elem-field">
+            <legend>数据统计</legend>
+            <div class="layui-field-box">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            <div class="layui-carousel x-admin-carousel x-admin-backlog" lay-anim="" lay-indicator="inside" lay-arrow="none" style="width: 100%; height: 90px;">
+                                <div carousel-item="">
+                                    <ul class="layui-row layui-col-space10 layui-this">
+                                        <li class="layui-col-xs2">
+                                            <a href="javascript:;" class="x-admin-backlog-body">
+                                                <h3>会员数</h3>
+                                                <p>
+                                                    <cite>66</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs2">
+                                            <a href="javascript:;" class="x-admin-backlog-body">
+                                                <h3>药店数</h3>
+                                                <p>
+                                                    <cite>12</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs2">
+                                            <a href="javascript:;" class="x-admin-backlog-body">
+                                                <h3>员工数</h3>
+                                                <p>
+                                                    <cite>99</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs2">
+                                            <a href="javascript:;" class="x-admin-backlog-body">
+                                                <h3>订单数</h3>
+                                                <p>
+                                                    <cite>67</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs2">
+                                            <a href="javascript:;" class="x-admin-backlog-body">
+                                                <h3>药品种类数</h3>
+                                                <p>
+                                                    <cite>67</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs2">
+                                            <a href="javascript:;" class="x-admin-backlog-body">
+                                                <h3>药品交易记录总数</h3>
+                                                <p>
+                                                    <cite>6766</cite></p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        
+        <fieldset class="layui-elem-field">
+            <legend>个人信息</legend>
+            <div class="layui-field-box">
+                <table class="layui-table">
+                    <tbody>
+                        <tr>
+                            <th>电话号码</th>
+                            <td><p th:text="${session.admin.getPhoneNumber()}"></p></td></tr>
+                        <tr>
+                            <th>姓名</th>
+                            <td><p th:text="${session.admin.getName()}"></p></td></tr>
+                        <tr>
+                            <th>邮箱</th>
+                            <td><p th:text="${session.admin.getEmail()}"></p></td></tr>
+                        <tr>
+                            <th>年龄</th>
+                            <td><p th:text="${session.admin.getAge()}"></p></td></tr>
+                        <tr>
+                            <th>上次登录时间</th>
+                            <td><p th:text="${session.lastTimeString}"></p></td></tr>
+                    </tbody>
+                </table>
+                <a href="/html/adminEditInfo">修改信息</a>
+                <!--<a onClick="x_admin_show('个人信息','/html/adminEditInfo')">修改信息</a>-->
+                <!--<a data-toggle="modal" data-target="#exampleModal" href="#" id="modal"></a>-->
+            </div>
+        </fieldset>
+    </div>
+   
+    </body>
+</html>

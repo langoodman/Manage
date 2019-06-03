@@ -28,8 +28,8 @@ public class User implements Serializable {
     private String name;
     @Column(name = "gender")
     private String gender;
-    @Column(name = "status_id")
-    private Integer statusId;
+    @Column(name = "status")
+    private String status;
     @Column(name = "pharmacy_id")
     private Integer pharmacyId;
     @Column(name = "integral")

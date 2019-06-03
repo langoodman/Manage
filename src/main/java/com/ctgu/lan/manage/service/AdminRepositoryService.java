@@ -15,4 +15,5 @@ public interface AdminRepositoryService {
     Admin findByEmailAndPhoneNumber(String email , String phoneNumber);
     int modifyNowTimeById(String nowTime, Integer id);
     int modifyPassWordById(@Param("passWord") String passWord, @Param("id") Integer id);
+    Admin updateAdminInfo(Admin admin);
 }
