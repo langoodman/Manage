@@ -1,5 +1,7 @@
 package com.ctgu.lan.manage.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import com.ctgu.lan.manage.model.User;
@@ -8,9 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * @Description TODO
@@ -49,9 +53,88 @@ public class UserController {
                                   @RequestParam(value = "PageSize", required = false, defaultValue = "10") Integer pageSize){
         Page<User> users = userRepositoryService.findAll(PageRequest.of(startPage - 1, pageSize));
         List<User> userList = users.getContent();
-        for( User user:userList){
-            System.out.println(user.toString());
-        }
+//        for( User user:userList){
+//            System.out.println(user.toString());
+//        }
         return userList;
+    }
+
+
+    /**
+     * 看进行的是什么操作
+     * @param user
+     * @param attributes
+     * @return
+     */
+    @RequestMapping("/operationUser")
+    public String operationTeacher(User user, RedirectAttributes attributes){
+        if(user.getId() == null){
+            attributes.addFlashAttribute("adminUser", user);
+            return "redirect:/user/addUserInfo";
+        }else {
+            attributes.addFlashAttribute("adminUser", user);
+            return "redirect:/user/updateUserInfo";
+        }
+    }
+
+    /**
+     * 添加一个会员
+     * @param user
+     * @param model
+     * @param session
+     * @return
+     */
+    @RequestMapping("/addUserInfo")
+    @ResponseBody
+    public String addOneTeacher(@ModelAttribute("adminUser")User user , Model model , HttpSession session ){
+        if( userRepositoryService.findByPhoneNumber(user.getPhoneNumber()) != null ){
+            model.addAttribute("manageUserMsg", "该会员已存在!");
+            return "0";
+        }
+        else {
+            Date nowTime = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String nowTimeString = sdf.format(nowTime);
+            user.setSignTime(nowTimeString);
+            userRepositoryService.addUserInfo(user);
+            model.addAttribute("manageUserMsg", "增加成功!");
+            return "1";
+        }
+    }
+
+    /**
+     * 修改会员的信息
+     * @param model
+     * @param session
+     * @param user
+     * @return
+     */
+    @RequestMapping("/updateUserInfo")
+    @ResponseBody
+    public String updateOneTeacher( Model model , HttpSession session ,@ModelAttribute("adminUser") User user ){
+        if( userRepositoryService.findByPhoneNumber(user.getPhoneNumber()) == null ){
+            model.addAttribute("manageUserMsg", "该会员已存在!");
+            return "0";
+        }
+        else {
+            userRepositoryService.updateUserInfo(user);
+            model.addAttribute("manageUserMsg", "修改成功!");
+            return "1";
+        }
+    }
+
+    @RequestMapping("/delUser")
+    @ResponseBody
+    public String deleOneTeacher( Model model , HttpSession session,
+                                  @RequestParam("id") Integer id ){
+        if( userRepositoryService.findOneById(id) == null ){
+            model.addAttribute("manageUserMsg", "该会员不存在!");
+            return "0";
+        }
+        else {
+            userRepositoryService.deleUserById(id);
+            model.addAttribute("manageUserMsg", "删除成功!");
+            return "1";
+        }
     }
 }

@@ -30,4 +30,29 @@ public class UserRepositoryServiceImpl implements UserRepositoryService {
     public Page<User> findAll(Pageable pageable) {
         return userRepository.findAll(pageable);
     }
+
+    @Override
+    public User updateUserInfo(User user) {
+        return userRepository.saveAndFlush(user);
+    }
+
+    @Override
+    public User addUserInfo(User user) {
+        return userRepository.saveAndFlush(user);
+    }
+
+    @Override
+    public User findByPhoneNumber(String phoneNumber) {
+        return userRepository.findByPhoneNumber(phoneNumber);
+    }
+
+    @Override
+    public User findOneById(Integer id) {
+        return userRepository.findOneById(id);
+    }
+
+    @Override
+    public void deleUserById(Integer id) {
+        userRepository.deleteById(id);
+    }
 }

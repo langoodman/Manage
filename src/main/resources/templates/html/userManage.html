@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link href="../../static/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../../static/css/pages.css">
+    <script src="../../static/js/Util.js"></script>
     <style type="text/css">
 		html,
 		body,
@@ -24,9 +25,9 @@
 <body>
 <div class="heading">
     <button id="build" type="button" class="btn btn-success" onclick="append()">添加 </button>
-    <button id="btnDel" type="button" class="btn btn-danger" onclick="delect('/tutor/admin/delTeacher?id=')">删除 </button>
+    <button id="btnDel" type="button" class="btn btn-danger" onclick="delect('/user/delUser?id=')">删除 </button>
     <button id="btnEdit" type="button" class="btn btn-warning">编辑</button>
-    <input type="text" /><input type="button" value="搜索" class="btn btn-info" />
+    <!--<input type="text" /><input type="button" value="搜索" class="btn btn-info" />-->
 </div>
 <!--@*表格*@ -->
 <div class="widget-content padded clearfix">
@@ -55,7 +56,7 @@
 </div>
 <div id="pagination" class="pagination"></div>
 
-<script src="../../static/js/jquery-1.11.1.min.js"></script>
+<script src="../../static/js/jquery-3.3.1.min.js"></script>
 <script src="../../static/js/bootstrap.min.js"></script>
 <!--<script src="../js/Util.js"></script>-->
 <!--@*创建表格*@ -->
@@ -65,7 +66,7 @@
 <script src="../../static/js/pages.js"></script>
 <script src="../../static/js/ajax.js"></script>
 <script src="../../static/js/submit.js"></script>
-<script src="../../static/js/teacher-get.js">
+<script src="../../static/js/user-get.js">
 
 </script>
 

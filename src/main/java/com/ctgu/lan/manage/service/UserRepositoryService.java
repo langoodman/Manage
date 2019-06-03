@@ -14,4 +14,9 @@ import org.springframework.data.domain.Pageable;
 public interface UserRepositoryService {
     Long countUser();
     Page<User> findAll(Pageable pageable);
+    User updateUserInfo(User user);
+    User addUserInfo(User user);
+    User findByPhoneNumber(String phoneNumber);
+    User findOneById(Integer id);
+    void deleUserById(Integer id);
 }

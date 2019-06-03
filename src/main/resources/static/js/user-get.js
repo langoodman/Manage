@@ -1,6 +1,6 @@
 window.onload = function () {
     var url = '/user/getUserData?';
-    var suburl = "/tutor/admin/operationTeacher";
+    var suburl = "/user/operationUser";
     var content = document.getElementById('mainbody');
     var tmp = '';
     var list = 0;

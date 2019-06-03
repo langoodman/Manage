@@ -18,7 +18,7 @@ import java.util.Date;
 @Table(name = "user")
 public class User implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "card_id")
     private String cardId;
@@ -35,5 +35,5 @@ public class User implements Serializable {
     @Column(name = "integral")
     private Integer integral;
     @Column(name = "sign_time")
-    private Date signTime;
+    private String signTime;
 }
