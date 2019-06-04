@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -123,16 +125,23 @@ public class MedicineController {
     @RequestMapping("/delMedicine")
     @ResponseBody
     public String delMedicine( Model model , HttpSession session,
-                                   @RequestParam("id") Integer id ){
-        if( medicineRepositoryService.findOneById(id) == null ){
-            model.addAttribute("manageMedicineMsg", "该药品不存在!");
-            return "0";
+                                   @RequestParam("id") String id ){
+        List<String> stringIdList = Arrays.asList(id.split(","));
+        List<Integer> idList = new ArrayList<Integer>();
+        for( String str : stringIdList ){
+            idList.add(Integer.parseInt(str));
         }
-        else {
-            medicineRepositoryService.deleMedicineById(id);
-            model.addAttribute("manageMedicineMsg", "删除成功!");
-            return "1";
+        for( Integer idNum : idList ){
+            if( medicineRepositoryService.findOneById(idNum) == null ){
+                model.addAttribute("manageMedicineMsg", "该药品不存在!");
+                return "0";
+            }
+            else{
+                medicineRepositoryService.deleMedicineById(idNum);
+            }
         }
+        model.addAttribute("manageMedicineMsg", "删除成功!");
+        return "1";
     }
 
     /**

@@ -74,15 +74,15 @@ INSERT INTO medicine (name,number,origin,specification,price,stock)
 -- 订单表
 CREATE TABLE if not exists orders(
 	id int auto_increment PRIMARY KEY,
-	staff_id int NOT NULL COMMENT '员工id',
-	pharmacy_id int NOT NULL COMMENT '药店id',
-	user_id int COMMENT '会员id',
+	staff_name int NOT NULL COMMENT '员工名字',
+	pharmacy_name int NOT NULL COMMENT '药店名字',
+	user_card_id int COMMENT '会员卡卡号',
 	should_money double(10,2) COMMENT '应收金额',
 	relly_money double(10,2) COMMENT '实收金额',
-	integral int default 0 COMMENT '本地积分'
+	integral int default 0 COMMENT '此次消费积分积分'
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT = 10001;
-INSERT INTO orders (staff_id,pharmacy_id,user_id,should_money,relly_money,integral) 
-	VALUES(10001,10001,10001,100,100,100);
+--INSERT INTO orders (staff_id,pharmacy_id,user_id,should_money,relly_money,integral)
+--	VALUES(10001,10001,10001,100,100,100);
 
 -- 药品交易表
 CREATE TABLE if not exists medicine_transaction(

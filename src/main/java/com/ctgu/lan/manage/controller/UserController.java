@@ -1,6 +1,8 @@
 package com.ctgu.lan.manage.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -133,16 +135,24 @@ public class UserController {
     @RequestMapping("/delUser")
     @ResponseBody
     public String deleOneUser( Model model , HttpSession session,
-                                  @RequestParam("id") Integer id ){
-        if( userRepositoryService.findOneById(id) == null ){
-            model.addAttribute("manageUserMsg", "该会员不存在!");
-            return "0";
+                                  @RequestParam("id") String id ){
+        List<String> stringIdList = Arrays.asList(id.split(","));
+        List<Integer> idList = new ArrayList<Integer>();
+        for( String str : stringIdList ){
+            idList.add(Integer.parseInt(str));
         }
-        else {
-            userRepositoryService.deleUserById(id);
-            model.addAttribute("manageUserMsg", "删除成功!");
-            return "1";
+        for( Integer idNum : idList ){
+            if( userRepositoryService.findOneById(idNum) == null ){
+                model.addAttribute("manageUserMsg", "该会员不存在!");
+                return "0";
+            }
+            else{
+                userRepositoryService.deleUserById(idNum);
+
+            }
         }
+        model.addAttribute("manageUserMsg", "删除成功!");
+        return "1";
     }
 
     /**

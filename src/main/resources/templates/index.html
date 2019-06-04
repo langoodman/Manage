@@ -25,6 +25,7 @@
             <i title="展开左侧栏" class="iconfont">&#xe699;</i>
         </div>
         <ul class="layui-nav right" lay-filter="">
+            <li class="layui-nav-item to-index"><a href="#" onclick="refresh()">刷新</a></li>
           <li class="layui-nav-item">
             <a href="javascript:;"><p th:text="${session.admin.getName()}"></p></a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
@@ -67,9 +68,17 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
+                        <a _href="/html/ordersManage">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>订单管理</cite>
+                        </a>
+                    </li >
+                </ul>
+                <ul class="sub-menu">
+                    <li>
                         <a _href="html/order-list.html">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>订单列表</cite>
+                            <cite>药品交易</cite>
                         </a>
                     </li >
                 </ul>
@@ -95,111 +104,7 @@
                     </li >
                 </ul>
             </li>            
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#xe6b8;</i>
-                    <cite>用户管理</cite>
-                    <i class="iconfont nav_right">&#xe6a7;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="html/member-list.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>会员列表</cite>
-                            
-                        </a>
-                    </li >
-                    <li>
-                        <a _href="html/member-del.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>会员删除</cite>
-                            
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <i class="iconfont">&#xe70b;</i>
-                            <cite>会员管理</cite>
-                            <i class="iconfont nav_right">&#xe6a7;</i>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a _href="html/member-del.html">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>会员列表</cite>
-                                    
-                                </a>
-                            </li >
-                            <li>
-                                <a _href="html/member-del.html">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>会员删除</cite>
-                                    
-                                </a>
-                            </li>
-                            
-                        </ul>
-                    </li>
-                    
-                </ul>
-            </li>             
-<li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#xe6ae;</i>
-                    <cite>系统统计</cite>
-                    <i class="iconfont nav_right">&#xe6a7;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="html/echarts1.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>拆线图</cite>
-                        </a>
-                    </li >
-                    <li>
-                        <a _href="html/echarts2.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>柱状图</cite>
-                        </a>
-                    </li>
-                    <li>
-                        <a _href="html/echarts3.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>地图</cite>
-                        </a>
-                    </li>
-                    <li>
-                        <a _href="html/echarts4.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>饼图</cite>
-                        </a>
-                    </li>
-                    <li>
-                        <a _href="html/echarts5.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>雷达图</cite>
-                        </a>
-                    </li>
-                    <li>
-                        <a _href="html/echarts6.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>k线图</cite>
-                        </a>
-                    </li>
-                    <li>
-                        <a _href="html/echarts7.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>热力图</cite>
-                        </a>
-                    </li>
-                    <li>
-                        <a _href="html/echarts8.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>仪表图</cite>
-                        </a>
-                    </li>
-                </ul>
-            </li>            </ul>
+        </ul>
       </div>
     </div>
     <!-- <div class="x-slide_left"></div> -->
@@ -218,6 +123,11 @@
         </div>
     </div>
     <div class="page-content-bg"></div>
+    <script type="text/javascript">
+        function refresh(){
+            window.location.reload();
+        }
+    </script>
     <!-- 右侧主体结束 -->
     <!-- 中部结束 -->
     <!-- 底部开始 -->

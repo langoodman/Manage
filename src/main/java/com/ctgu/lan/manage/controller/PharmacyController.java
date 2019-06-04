@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -123,17 +125,39 @@ public class PharmacyController {
     @RequestMapping("/delPharmacy")
     @ResponseBody
     public String deleOnePharmacy( Model model , HttpSession session,
-                                @RequestParam("id") Integer id ){
-        if( pharmacyRepositoryService.findOneById(id) == null ){
-            model.addAttribute("managePharmacyMsg", "该药店不存在!");
-            return "0";
+                                   @RequestParam("id") String id ){
+        List<String> stringIdList = Arrays.asList(id.split(","));
+        List<Integer> idList = new ArrayList<Integer>();
+        for( String str : stringIdList ){
+            idList.add(Integer.parseInt(str));
         }
-        else {
-            pharmacyRepositoryService.delePharmacyById(id);
-            model.addAttribute("managePharmacyMsg", "删除成功!");
-            return "1";
+        for( Integer idNum : idList ){
+            if( pharmacyRepositoryService.findOneById(idNum) == null ){
+                model.addAttribute("managePharmacyMsg", "该药店不存在!");
+                return "0";
+            }
+            else{
+                pharmacyRepositoryService.delePharmacyById(idNum);
+
+            }
         }
+        model.addAttribute("managePharmacyMsg", "删除成功!");
+        return "1";
     }
+//    @RequestMapping("/delPharmacy")
+//    @ResponseBody
+//    public String deleOnePharmacy( Model model , HttpSession session,
+//                                @RequestParam("id") Integer id ){
+//        if( pharmacyRepositoryService.findOneById(id) == null ){
+//            model.addAttribute("managePharmacyMsg", "该药店不存在!");
+//            return "0";
+//        }
+//        else {
+//            pharmacyRepositoryService.delePharmacyById(id);
+//            model.addAttribute("managePharmacyMsg", "删除成功!");
+//            return "1";
+//        }
+//    }
 
     /**
      * 通过名字查询

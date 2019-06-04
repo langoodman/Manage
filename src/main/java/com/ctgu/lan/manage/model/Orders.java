@@ -20,12 +20,12 @@ public class Orders implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "staff_id")
-    private Integer staffId;
-    @Column(name = "pharmacy_id")
-    private Integer pharmacyId;
-    @Column(name = "user_id")
-    private Integer userId;
+    @Column(name = "staff_name")
+    private String staffName;
+    @Column(name = "pharmacy_name")
+    private String pharmacyName;
+    @Column(name = "user_card_id")
+    private String userCardId;
     @Column(name = "should_money")
     private Double shouldMoney;
     @Column(name = "really_money")
