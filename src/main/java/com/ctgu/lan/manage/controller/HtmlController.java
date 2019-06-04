@@ -58,4 +58,13 @@ public class HtmlController {
     public String pharmacyManage(){
         return "html/pharmacyManage";
     }
+
+    /**
+     * 跳转药品管理页面
+     * @return
+     */
+    @RequestMapping("/medicineManage")
+    public String medicineManage(){
+        return "html/medicineManage";
+    }
 }

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>药店信息管理</title>
+    <title>药品信息管理</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link href="../../static/css/bootstrap.min.css" rel="stylesheet" />
@@ -27,7 +27,7 @@
     <button id="build" type="button" class="btn btn-success" onclick="append()">添加 </button>
     <button id="btnDel" type="button" class="btn btn-danger" onclick="delect('/pharmacy/delPharmacy?id=')">删除 </button>
     <button id="btnEdit" type="button" class="btn btn-warning">编辑</button>
-    <input type="text" id="name" placeholder="请输入药店名字进行查询"/>
+    <input type="text" id="name" placeholder="请输入药品名字进行查询"/>
     <input type="button" value="搜索" class="btn btn-info" onclick="find()" />
 </div>
 <!--@*表格*@ -->
@@ -39,9 +39,12 @@
             <th class="check-header hidden-xs">
                 <input id="checkAll" name="checkAll" type="checkbox">
             <th style="display:none">id</th>
-            <th>电话号码 </th>
-            <th>药店地址</th>
-            <th>药店名字</th>
+            <th>药品名称 </th>
+            <th>药品批号 </th>
+            <th>药品产地 </th>
+            <th>药品规格 </th>
+            <th>药品价格</th>
+            <th>药店库存</th>
             <th>操作</th>
             </thead>
             <tbody id="mainbody">
@@ -57,12 +60,12 @@
 <!--<script src="../js/Util.js"></script>-->
 <!--@*创建表格*@ -->
 <script src="../../static/js/edit.js"></script>
-<script src="../../static/js/pharmacy-add.js"></script>
+<script src="../../static/js/medicine-add.js"></script>
 <script src="../../static/js/delect.js"></script>
 <script src="../../static/js/pages.js"></script>
 <script src="../../static/js/ajax.js"></script>
 <script src="../../static/js/submit.js"></script>
-<script src="../../static/js/pharmacy-get.js"></script>
+<script src="../../static/js/medicine-get.js"></script>
 <script type="text/javascript">
     function fun(id){
     	return document.getElementById(id);
@@ -72,7 +75,7 @@
         var data = {};
 		data.name = $name.value;
 	    $.ajax({
-            url: "/pharmacy/findPharmacyByName",
+            url: "/medicine/findMedicineByName",
             async : true,
             type: "post",
             contentType:"application/json;charset=utf-8",
@@ -83,12 +86,15 @@
         	    if(data.name != "errorFind"){
         	        alert("查询到如下信息:\r\n "+
 	                "ID          :" + data.id + " \r\n " +
-	                "电话号码:" + data.phoneNumber + " \r\n " +
-	                "药店地址:" + data.address + " \r\n " +
-	                "药店名字:" + data.name + " \r\n ");
+	                "药品名称:" + data.name + " \r\n " +
+	                "药品批号:" + data.number + " \r\n " +
+	                "药品产地:" + data.origin + " \r\n " +
+	                "药品规格:" + data.specification + " \r\n " +
+	                "药品价格:" + data.price + " \r\n " +
+	                "药店库存:" + data.stock + " \r\n ");
         	     }
         	     else{
-        	         alert("查不到店铺信息!");
+        	         alert("查不到药品信息!");
         	     }
         	 },
         	 error: function(XMLHttpRequest, textStatus, errorThrown){

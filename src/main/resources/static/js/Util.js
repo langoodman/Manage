@@ -25,11 +25,18 @@ function adminDataFormat(obj){
     var data={};
     $tds.each(function(index,td){
         var  $td = $(td).text();
+        var flag = 1;
+        if($td.indexOf(".")!=-1){
+            flag = 0;
+        }
         if($(td).attr("ignore") != undefined){
         	;
-        }else if(!isNaN($td) && parseInt($td)< 100){
-    		data[$(td).attr("name")]=parseInt($td);
-    	}else{
+        }
+        else if(!isNaN($td) && parseInt($td)< 100){
+            if( flag != 0 ) data[$(td).attr("name")]=parseInt($td);
+            else data[$(td).attr("name")]=parseFloat($td);
+    	}
+    	else{
     		data[$(td).attr("name")]=$(td).text();
     	}
     });

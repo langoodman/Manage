@@ -28,8 +28,8 @@ public class Orders implements Serializable {
     private Integer userId;
     @Column(name = "should_money")
     private Double shouldMoney;
-    @Column(name = "relly_money")
-    private Double rellyMoney;
+    @Column(name = "really_money")
+    private Double reallyMoney;
     @Column(name = "integral")
     private Integer integral;
 
