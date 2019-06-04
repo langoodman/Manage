@@ -17,5 +17,6 @@ public interface OrdersRepositoryService {
     Orders updateOrdersInfo(Orders orders);
     Orders addOrdersInfo(Orders orders);
     Orders findOneById(Integer id);
+    Orders findOneByPharmacyName(String pharmacyName );
     void deleOrdersById(Integer id);
 }

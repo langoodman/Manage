@@ -20,8 +20,8 @@ public class MedicineTransaction implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "medicine_id")
-    private Integer medicineId;
+    @Column(name = "medicine_name")
+    private String medicineName;
     @Column(name = "orders_id")
     private Integer ordersId;
     @Column(name = "count")

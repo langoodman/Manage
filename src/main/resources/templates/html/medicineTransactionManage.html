@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>药店信息管理</title>
+    <title>药品交易管理</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link href="../../static/css/bootstrap.min.css" rel="stylesheet" />
@@ -25,9 +25,9 @@
 <body>
 <div class="heading">
     <button id="build" type="button" class="btn btn-success" onclick="append()">添加 </button>
-    <button id="btnDel" type="button" class="btn btn-danger" onclick="delect('/pharmacy/delPharmacy?id=')">删除 </button>
+    <button id="btnDel" type="button" class="btn btn-danger" onclick="delect('/medicineTransaction/delMedicineTransaction?id=')">删除 </button>
     <button id="btnEdit" type="button" class="btn btn-warning">编辑</button>
-    <input type="text" id="name" placeholder="请输入药店名字进行查询"/>
+    <input type="text" id="medicineName" placeholder="请输入药品名字进行查询"/>
     <input type="button" value="搜索" class="btn btn-info" onclick="find()" />
     <input type="button" value="刷新" class="btn btn-info" onclick="refresh()" />
     <script type="text/javascript">
@@ -45,9 +45,9 @@
             <th class="check-header hidden-xs">
                 <input id="checkAll" name="checkAll" type="checkbox">
             <th style="display:none">id</th>
-            <th>电话号码 </th>
-            <th>药店地址</th>
-            <th>药店名字</th>
+            <th>药品名称 </th>
+            <th>订单编号</th>
+            <th>交易数量</th>
             <th>操作</th>
             </thead>
             <tbody id="mainbody">
@@ -63,22 +63,22 @@
 <!--<script src="../js/Util.js"></script>-->
 <!--@*创建表格*@ -->
 <script src="../../static/js/edit.js"></script>
-<script src="../../static/js/pharmacy-add.js"></script>
+<script src="../../static/js/medicineTransaction-add.js"></script>
 <script src="../../static/js/delect.js"></script>
 <script src="../../static/js/pages.js"></script>
 <script src="../../static/js/ajax.js"></script>
 <script src="../../static/js/submit.js"></script>
-<script src="../../static/js/pharmacy-get.js"></script>
+<script src="../../static/js/medicineTransaction-get.js"></script>
 <script type="text/javascript">
     function fun(id){
     	return document.getElementById(id);
 	}
 	function find(){
-        var $name = fun("name");
+        var $medicineName = fun("medicineName");
         var data = {};
-		data.name = $name.value;
+		data.medicineName = $medicineName.value;
 	    $.ajax({
-            url: "/pharmacy/findPharmacyByName",
+            url: "/medicineTransaction/findMedicineTransactionByMedicineName",
             async : true,
             type: "post",
             contentType:"application/json;charset=utf-8",
@@ -86,15 +86,15 @@
             data: JSON.stringify(data),
       	    success: function (data) {
       	        console.log(data);
-        	    if(data.name != "errorFind"){
+        	    if(data.medicineName != "errorFind"){
         	        alert("查询到如下信息:\r\n "+
 	                "ID          :" + data.id + " \r\n " +
-	                "电话号码:" + data.phoneNumber + " \r\n " +
-	                "药店地址:" + data.address + " \r\n " +
-	                "药店名字:" + data.name + " \r\n ");
+	                "药品名称:" + data.medicineName + " \r\n " +
+	                "订单编号:" + data.ordersId + " \r\n " +
+	                "交易数量:" + data.count + " \r\n ");
         	     }
         	     else{
-        	         alert("查不到店铺信息!");
+        	         alert("查不到交易信息!");
         	     }
         	 },
         	 error: function(XMLHttpRequest, textStatus, errorThrown){

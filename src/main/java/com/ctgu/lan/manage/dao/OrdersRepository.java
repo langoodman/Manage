@@ -15,5 +15,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface OrdersRepository extends JpaRepository<Orders , Integer> {
     Page<Orders> findAll(Pageable pageable);
     Orders findOneById(Integer id );
+    Orders findOneByPharmacyName(String pharmacyName );
     void deleteById(Integer id);
 }

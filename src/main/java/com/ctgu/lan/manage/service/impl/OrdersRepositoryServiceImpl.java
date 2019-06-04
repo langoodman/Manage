@@ -46,6 +46,11 @@ public class OrdersRepositoryServiceImpl implements OrdersRepositoryService {
     }
 
     @Override
+    public Orders findOneByPharmacyName(String pharmacyName) {
+        return ordersRepository.findOneByPharmacyName(pharmacyName);
+    }
+
+    @Override
     public void deleOrdersById(Integer id) {
         ordersRepository.deleteById(id);
     }

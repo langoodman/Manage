@@ -76,4 +76,13 @@ public class HtmlController {
     public String ordersManage(){
         return "html/ordersManage";
     }
+
+    /**
+     * 跳转到药品交易记录页面
+     * @return
+     */
+    @RequestMapping("/medicineTransactionManage")
+    public String medicineTransactionManage(){
+        return "html/medicineTransactionManage";
+    }
 }

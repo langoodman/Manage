@@ -47,6 +47,9 @@ public class AdminController {
     @Autowired
     private OrdersRepositoryService ordersRepositoryService;
 
+    @Autowired
+    private MedicineTransactionRepositoryService medicineTransactionRepositoryService;
+
     /**
      * 跳转到修改密码界面
      * @return
@@ -86,11 +89,13 @@ public class AdminController {
             Long pharmacyCount = pharmacyRepositoryService.countPharmacy();
             Long medicineCount = medicineRepositoryService.countMedicine();
             Long ordersCount = ordersRepositoryService.countOrders();
+            Long medicineTransactionCount = medicineTransactionRepositoryService.countMedicineTransaction();
             session.setAttribute("userCount",userCount);
             session.setAttribute("staffCount",staffCount);
             session.setAttribute("pharmacyCount",pharmacyCount);
             session.setAttribute("medicineCount",medicineCount);
             session.setAttribute("ordersCount",ordersCount);
+            session.setAttribute("medicineTransactionCount",medicineTransactionCount);
 //            return "redirect:/login";
             return "index";
         }

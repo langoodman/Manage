@@ -146,21 +146,21 @@ public class OrdersController {
         return "1";
     }
 
-//    /**
-//     * 通过名字查询
-//     * @param pharmacy
-//     * @param session
-//     * @return
-//     */
-//    @RequestMapping("/findPharmacyByName")
-//    @ResponseBody
-//    public Pharmacy findPharmacyByName(@RequestBody(required = false) Pharmacy pharmacy,
-//                                       HttpSession session){
-//        Pharmacy findPharmacy = pharmacyRepositoryService.findByName(pharmacy.getName());
-//        if( findPharmacy == null ){
-//            pharmacy.setName("errorFind");
-//            return pharmacy;
-//        }
-//        return findPharmacy;
-//    }
+    /**
+     * 通过药店名字查询
+     * @param orders
+     * @param session
+     * @return
+     */
+    @RequestMapping("/findOrdersByPharmacyName")
+    @ResponseBody
+    public Orders findOrdersByPharmacyName(@RequestBody(required = false) Orders orders,
+                                       HttpSession session){
+        Orders findOrders = ordersRepositoryService.findOneByPharmacyName(orders.getPharmacyName());
+        if( findOrders == null ){
+            orders.setPharmacyName("errorFind");
+            return orders;
+        }
+        return findOrders;
+    }
 }
