@@ -11,11 +11,13 @@ package com.ctgu.lan.manage.utils;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-/**
- * MD5加密
- */
 public class MD5Util {
 
+    /**
+     * MD5加密
+     * @param str
+     * @return
+     */
     public static String crypt(String str) {
         if (str == null || str.length() == 0) {
             throw new IllegalArgumentException("String to encript cannot be null or zero length");
